@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  server:
+    build: .
+    container_name: grpc_server
+    command: python server/server.py
+    ports:
+      - "50051:50051"
+    volumes:
+      - .:/app
+    networks:
+      custom_net:
+
+  client:
+    build: .
+    container_name: grpc_client
+    command: python client/client.py
+    depends_on:
+      - server
+    volumes:
+      - .:/app
+    networks:
+      custom_net:
+
+networks:
+  custom_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
