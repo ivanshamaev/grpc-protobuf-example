@@ -43,7 +43,7 @@ python -m grpc_tools.protoc -I=./proto --python_out=./server --grpc_python_out=.
 python -m grpc_tools.protoc -I=./proto --python_out=./client --grpc_python_out=./client ./proto/hello.proto
 ```
 
-Каждая команда сгенерирует 2 одинаковых файла в двух разных директориях `./client` и `./server`.
+Каждая команда сгенерирует по 2 файла в двух разных директориях `./client` и `./server` (2 файла в client идентичны 2м файлам в server).
 
 # Запускаем локально (без Docker) сервер и клиент на разных портах
 
